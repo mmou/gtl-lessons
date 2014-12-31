@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Merry's web page</title>
+
+        <style>
+            body {
+                font-family: Helvetica Neue, Helvetica, Arial;
+                padding: 40px;
+            }
+
+            /* teach positioning */
+            .info {
+                margin: 20px;
+                border: 10;
+
+            }
+
+            .info:hover {
+                cursor: pointer;
+            }
+
+            .english, .italian {
+                padding: 20px;
+                border-style: solid;
+                border-radius: 4px;                               
+            }
+
+            .english {
+                background-color: rgb(116, 178, 255);
+                border-color: rgb(116, 178, 255);
+            }
+
+            .italian {
+                background-color: rgb(255, 235, 66);
+                border-color: rgb(255, 235, 66);
+            }
+
+        </style>
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+
+                $('.info').click(function(event) {
+                    $(event.target).parent().children().toggle();
+                });
+
+            })
+        </script>
+
+    </head>
+
+    <body>
+        <div id="heading">
+            <h1> Hi I'm Merry! </h1>
+        </div>
+
+        <div id="content">
+            <div class="info">
+                <div class="english">
+                    My name is Merry Mou.
+                </div>
+                <div hidden class="italian">
+                    italian translation
+                </div>
+            </div>
+
+            <div class="info">
+                <div class="english">
+                    I am 20 years old.
+                </div>
+                <div hidden class="italian">
+                    italian translation
+                </div>
+            </div>
+
+            <div class="info">
+                <div class="english">
+                    ...more...
+                </div>
+                <div hidden class="italian">
+                    italian translation
+                </div>
+            </div>            
+
+        </div>
+
+    </body>
+</html>
