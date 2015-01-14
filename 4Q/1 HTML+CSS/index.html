@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+	
+	<!-- this is a html comment -->
+
+	<!-- head: not really displayed on page --> 
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
+		<title>Merry's webpage</title>
+
+		<!-- internal css styling -->
+		<style>
+			/* this is a css comment */
+
+			/* select by tag name */
+			h1 {
+				background-color: yellow;
+			}
+
+			/* select by id (ids are unique) */
+			#heading {
+				color: blue;
+				margin: 20px;
+				margin-top: 80px;
+				padding: 10px;
+				border: solid 2px rgb(246, 45, 45);		
+				font-family: 'Oswald', sans-serif;	
+			}
+
+			/* select by class (classes are not unique) */
+			.big {
+				font-size: 30px;
+			}
+
+			#green {
+				color: green;
+			}
+
+			.red {
+				color: red;
+			}
+
+		</style>
+
+		<!-- external css styling -->
+		<link rel="stylesheet" type="text/css" href="./index.css" />
+	</head>
+
+	<!-- body: content displayed on page -->
+	<body>
+		<div id="heading">
+			<h1> This is my title </h1>
+			<h2> Welcome to my page </h2>
+			<h1> this is another h1 tag </h1>
+		</div>
+		<div id="green" class="red">
+			id is more specific than class, so this will be green!
+		</div>
+		<div class="big">
+			<p>
+				<!-- inline css styling -->
+				this is a <span style="color:red">paragraph</span>!!
+				<br>this is <b>another</b> <i>sentence</i> on a new line.
+			</p>
+		</div>
+		<div class="big">
+			an ordered list of colors:
+			<ol> <!-- try replacing with <ul> -->
+				<li>blue</li>
+				<li>red</li>
+			</ol>
+		</div>
+		<div>
+			Let's go to <a href="http://www.google.com">google's website</a>!
+		</div>
+		
+	</body>
+
+</html>

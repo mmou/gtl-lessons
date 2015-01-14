@@ -9,7 +9,6 @@
                 padding: 40px;
             }
 
-            /* teach positioning */
             .info {
                 margin: 20px;
                 border: 10;
@@ -38,15 +37,20 @@
 
         </style>
 
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="./jquery-1.11.2.min.js"></script>
 
         <script>
             $(document).ready(function() {
 
                 $('.info').click(function(event) {
+                   $(event.target).parent().children().toggle();
+                })
+
+/*
+                $('.info').click(function(event) {
                     $(event.target).parent().children().toggle();
                 });
-
+*/
             })
         </script>
 

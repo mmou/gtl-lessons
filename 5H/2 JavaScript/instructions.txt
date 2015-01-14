@@ -1,0 +1,21 @@
+EXERCISE
+
+for each "// YOUR CODE HERE", write code to answer the question
+
+you can test your code in the chrome javascript console. copy and paste the data object and your code into the console.
+
+for help, look at my example code for numBlueEyes (or ask me!)
+
+
+
+~
+
+for the presentation:
+http://goo.gl/U4iE0X
+
+~
+
+for the code:
+OPEN http://goo.gl/ADvGPO
+select all (ctrl-A)
+copy and paste to a new Notepad text file

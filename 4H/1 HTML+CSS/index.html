@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+    <head>
+        <title>Merry's page</title>
+    
+        <!-- internal css -->
+        <style>
+            div {
+
+            }
+
+            /* select by tag name */
+            h1, h2 {
+                color:rgba(251, 0, 255, 0.9);
+            }
+
+            /* select by id (ids are unique) */
+            #color-list {
+                background-color:gray;
+
+                border: solid;
+
+                margin:50px; /* actually sets margin-left, margin-right, margin-top, margin-bottom */
+                margin-left:100px; /* more specific rule */
+
+                padding:12px;
+
+                position: relative;
+                top:0;
+
+            }
+
+            /* select using a pseudo-selector */
+            #color-list:hover {
+                cursor: pointer;
+            }
+
+            /* select by class (classes are not unique) */
+            .content {
+                font-size:20px;
+            }
+
+            /* select all 'p' tags INSIDE (that are CHILDREN of) an element with class 'content' */
+            .content p {
+                background-color: blue;
+            }
+
+
+
+        </style>
+
+        <!-- external css -->
+        <!--
+        <link rel="stylesheet" type="text/css" href="./index.css" /> -->
+    </head>
+
+    <body>
+        <h1>Merry's page</h1>
+        <!-- inline css -->
+        <h2 style="font-family:Arial">welcome to my page</h2>
+        <div id="color-list">
+            <ul>
+                <li>blue</li>
+                <li>red</li>
+            </ul>
+        </div>
+        <div class="content">
+            hello <span style="color:red">hello</span> <b>hello</b> <i>hello</i>
+        </div>
+        <div class="content">
+            goodbye
+        </div>
+        <div>
+            byebye no style
+        </div>
+    </body>
+
+
+</html>
