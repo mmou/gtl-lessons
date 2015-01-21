@@ -55,7 +55,7 @@ $("#username")
 
 $("#age")
   .keyup(function() {
-    checkError($("#age"), isNonNumber($("#age")));
+    clearError($("#age"));
     checkReadySubmit();    
   })
   .focusout(function() {
