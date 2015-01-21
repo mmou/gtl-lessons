@@ -31,7 +31,7 @@ var aveAge = function(users) {
 
 
 var aveAge = aveAge(data.content)
-console.log("Average age of all users: " + numBlueEyes)
+console.log("Average age of all users: " + aveAge)
 
 
 /*
