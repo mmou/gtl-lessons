@@ -3,8 +3,6 @@ var passport = require('passport');
 var utils = require('../utils/utils')
 
 var bcrypt = require('bcryptjs');
-var SALT_WORK_FACTOR = 10;
-
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
@@ -12,7 +10,6 @@ var connection = mysql.createConnection({
   user     : 'root',
   database : 'myapp'
 });
-
 
 
 var UsersController = {
@@ -25,14 +22,13 @@ var UsersController = {
         return next(err);
       };
       if (!user) {
-        return utils.sendErrResponse(res, 401, info.message);
+        return utils.sendErrorResponse(res, 401, info.message);
       };
       req.login(user, function(err) {
         if (err) {
           return next(err)
         } else {
-          var returnedUser = {'_id': user._id,
-                              'username': user.username};
+          var returnedUser = {'username': user.username};
           return utils.sendSuccessResponse(res, returnedUser);
         }
       });
@@ -42,25 +38,25 @@ var UsersController = {
 
   signup: function(req, res, next) {
 
-    var username = connection.escape(req.body.username);
-    var password = connection.escape(req.body.password);
+    var username = req.body.username;
+    var password = req.body.password;
 
-    var findUsernameQuery = "SELECT * FROM users WHERE username=" + username;
+    var findUsernameQuery = "SELECT * FROM users WHERE username=" + connection.escape(username);
     connection.query(findUsernameQuery, function(err, rows, fields) {
       if (rows.length > 0) {
         return utils.sendErrorResponse(res, 500, "username already taken")
       } else {
 
         // generate a salt
-        bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+        bcrypt.genSalt(10, function(err, salt) {
           if (err) return next(err);
 
           // hash the password using salt
           bcrypt.hash(password, salt, function(err, hash) {
             if (err) return next(err);
+
             // save username and hash
-            console.log("hash: " + hash);
-            var createUserQuery = "INSERT INTO users (username, password) VALUES (" + username + ", '" + hash + "');";
+            var createUserQuery = "INSERT INTO users (username, password) VALUES (" + connection.escape(username) + ", '" + hash + "');";
             connection.query(createUserQuery, function(err, rows, fields) {
               if (err) {
                 return utils.sendErrorResponse(res, 500, err.code)

@@ -16,28 +16,6 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  database : 'myapp'
-});
-
-// var query = "CREATE DATABASE myapp";
-// var query = "CREATE TABLE users (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, username VARCHAR(30) NOT NULL, password VARCHAR(1000) NOT NULL)"
-// var query = "INSERT INTO users (username, password) VALUES ('testusername', 'testpassword')"
-// var query = "SELECT * FROM users"
-// var query = "DROP table users"
-
-/* 
-
-connection.query(query, function(err, rows, fields) {
-
-})
-
-*/
-
-
 
 // set up passport strategy
 
@@ -48,21 +26,27 @@ var LocalStrategy = require('passport-local').Strategy;
 app.use(passport.initialize());
 app.use(passport.session());
 
+// configure passport authentication strategy 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    var findUsernameQuery = "SELECT * FROM users WHERE username=" + connection.escape(username);
-    connection.query(findUsernameQuery, function(err, rows, fields) {
-      if (err) { 
-        return done(err); 
+    
+    // TODO: this line is a mongodb query. replace with a mysql query.
+    User.findOne({ username: username }, function(err, user) {
+      if (err) { return done(err); }
+
+      // TODO: the mysql query callback does not have a user object. 
+      // replace with what works with our mysql module. 
+      // if it helps, define user variable for yourself
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
       }
-      if (rows.length <= 0) {
-        return done(null, false, {message: "Invalid username."});
-      }
-      var user = rows[0];      
-      if (bcrypt.compareSync(password, user.password)) {
-        return done(null, false, {message: "Invalid password."});
+
+      // TODO: we do not have a validPassword function. Instead, we use bcrypt.compare function. 
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
       }
       return done(null, user);
+
     });
   }
 ));
@@ -80,12 +64,10 @@ passport.deserializeUser(function(id, done) {
 
 
 
-
 // load routes
 
 var index = require('./routes/index');
 app.use('/', index);
-
 
 
 
