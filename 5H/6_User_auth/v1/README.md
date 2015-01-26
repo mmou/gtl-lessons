@@ -1,0 +1,1 @@
+First version of user authentication, with JSON returned to the client (and therefore is kind of messy).

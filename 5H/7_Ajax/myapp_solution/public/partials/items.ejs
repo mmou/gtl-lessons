@@ -1,0 +1,8 @@
+<ul class="list-group">
+	<% for (var i in items) { %>
+		<li class="list-group-item" data-id="<%= items[i].id %>">
+			<%= items[i].item %>
+			<span class="remove glyphicon glyphicon-remove" aria-hidden="true"></span>
+		</li>
+	<% } %>
+</ul>

@@ -1,0 +1,1 @@
+Simple app featuring AJAX, GET/POST/DELETE requests, client-side and server-side EJS template rendering, Bootstrap.

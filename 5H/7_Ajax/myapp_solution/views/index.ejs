@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+
+  <script type="text/javascript" src="js/lib/jquery-1.11.2.min.js"></script>
+  <script type='text/javascript' src='/js/lib/ejs_production.js'></script>
+  <script type="text/javascript" src="js/index.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+</head>
+
+<body>
+
+<div id="heading">
+  <h1><%= title %></h1>
+</div>
+
+<div id="content">
+  <div id="error" class="alert alert-danger" hidden></div>
+  <div id="get">
+    <b>GET items: </b>
+    <button id="populate-items-button" class="btn btn-default">populate items</button>
+  </div>
+  <div id="post">
+    <form id="add-form" method="post" action="/items" class="form-inline">
+      <div class="form-group">
+        <label for="add-form-item">POST (insert/add) item: </label>
+        <input type="text" name="item" id="add-form-item" placeholder="item" class="form-control" >
+      </div>
+      <button type="submit" class="btn btn-default">submit</button>
+    </form>
+  </div>
+	<div id="items-container">
+	</div>
+</div>
+
+</body>
+
+</html>
