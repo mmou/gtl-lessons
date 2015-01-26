@@ -15,7 +15,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-/*
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
@@ -24,6 +23,7 @@ var connection = mysql.createConnection({
   database : 'myapp'
 });
 
+/*
 // var query = "CREATE DATABASE myapp";
 // var query = "CREATE TABLE users (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, username VARCHAR(30) NOT NULL, password VARCHAR(1000) NOT NULL)"
 // var query = "INSERT INTO users (username, password) VALUES ('testusername', 'testpassword')"
@@ -31,11 +31,9 @@ var connection = mysql.createConnection({
 // var query = "DROP table users" 
 
 connection.query(query, function(err, rows, fields) {
-
+  console.log("query ", err)
 })
-
 */
-
 
 
 // set up passport strategy
@@ -87,8 +85,9 @@ passport.deserializeUser(function(id, done) {
 // load routes
 
 var index = require('./routes/index');
+var user = require('./routes/users');
 app.use('/', index);
-
+app.use('/users/', user);
 
 
 
