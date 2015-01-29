@@ -38,6 +38,13 @@ $(document).ready(function() {
 		}
 	};
 
+	/* Removes any cookies on screen */
+	var removeCookie = function() {
+		$("#cookie")
+			.removeAttr("id", "cookie")
+			.unbind('click')
+	};
+
 	/* Called when one successfully gets a cookie. */
 	var getCookie = function() {
 		// TODO: remove cookie / event handler
@@ -47,7 +54,7 @@ $(document).ready(function() {
 	/* Called when one fails to get a cookie. */
 	var loseCookie = function() {
 		// TODO: remove cookie / event handler
-		// TODO: Decrease score by 1. Update HTML to reflect new lives.
+		// TODO: Decrease lives by 1. Update HTML to reflect new lives.
 	};	
 
 	/* Attach "cookie" id and click event handler to a random cell */
@@ -109,7 +116,7 @@ $(document).ready(function() {
 
 	$("#new").click(function() {
 		newGame();
-	})
+	})`
 
     $("#play").click(function() {
     	if (!isPlaying) play();

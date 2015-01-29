@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 	// Game state variables
 	var INIT_SCORE = 0;
-	var INIT_LIVES = 100;
+	var INIT_LIVES = 10;
 	var score = INIT_SCORE;
 	var lives = INIT_LIVES;
 	var DURATION = 1000; // in milliseconds
@@ -123,7 +123,9 @@ $(document).ready(function() {
 
 	/* Clear any cookies on screen. Reset score and lives. Pause. */
 	var newGame = function() {
-		$("#cookie").remove();
+		$("#cookie")
+			.removeAttr("id", "cookie")
+			.unbind('click');
 
 		score = INIT_SCORE;
 		lives = INIT_LIVES;
